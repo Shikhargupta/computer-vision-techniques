@@ -94,7 +94,7 @@ Original image with the marker
 </p>
 
 
-## Image Segmentation
+## [Image Segmentation](Segmentation)
 
 <p align="center">
   <img src="https://blogs.nvidia.com/wp-content/uploads/2016/01/ces-computer-vision-example-web.gif" width="500"/>
@@ -103,6 +103,7 @@ Original image with the marker
 In computer vision, image segmentation is the process of partitioning a digital image into multiple segments (sets of pixels, also known as super-pixels). The goal of segmentation is to simplify and/or change the representation of an image into something that is more meaningful and easier to analyze.
 
 We'll apply a simpler version of segmentation on the image below
+The source code is [here](Segmentation/hex.py)
 
 <p align="center">
   <img src="images/hex.jpg" width="500"/>
