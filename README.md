@@ -14,6 +14,10 @@ This is the python implementation of some of the common yet important techniques
 
 ## [Tracking](Tracking)
 
+<p align="center">
+  <img src="https://cdn.filestackcontent.com/9SPtWkE9QsmLRsiwix7e" width="500"/>
+</p>
+
 This method is used when there is a need to track any subject in a video (or a set of frames). A **marker** is drawn around the subject in each frame so as to identify it. The algorithm can be applied on both RGB and HSV colour spaces and the choice really depends upon the situation. 
 
 **RGB** colour space is useful in case of humans. We can generate and identify any colour irrespective of the difference in intensity, texture etc. But machines are not so intelligent to do so. Light blue and dark blue are completely different colours for them. Sometimes, in the RGB colour sapce, there is a difference in the colour across the same surface due to uncontrollable factors. This makes tracking an objeect very difficult.
@@ -87,4 +91,41 @@ Original image with the marker
 
 <p align="center">
   <img src="images/d2_1.png" width="500"/>
+</p>
+
+
+## Image Segmentation
+
+<p align="center">
+  <img src="https://blogs.nvidia.com/wp-content/uploads/2016/01/ces-computer-vision-example-web.gif" width="500"/>
+</p>
+
+In computer vision, image segmentation is the process of partitioning a digital image into multiple segments (sets of pixels, also known as super-pixels). The goal of segmentation is to simplify and/or change the representation of an image into something that is more meaningful and easier to analyze.
+
+We'll apply a simpler version of segmentation on the image below
+
+<p align="center">
+  <img src="images/hex.jpg" width="500"/>
+</p>
+
+We have to detect only the hexagons. Hence we have to segment the image such that the hexagons are separated from rest of the image. Here is the walkthrough:
+
+1. We can see that most of the part in the image is dark i.e have low pixel value except our target (hexagons) and other few places which are brighter. This gives us an advantage - segmenting the hexagons from most of the parts of the image becomes easy.
+2. We use thresholding method to just keep the hexagons and other brighter parts. Thresholded image looks like this: 
+
+<p align="center">
+  <img src="images/thresh.jpg" width="500"/>
+</p>
+                        *Thresholding parameters were fine tuned by hit and trial to get best results*
+                        
+3. Now we have to further segregate the hexagons from the remaining parts. For this we use **findContours** function of OpenCV that locates all the continuous points in the image and stores them as a list of lists. Applying the same on the thresholded image we get:
+
+<p align="center">
+  <img src="images/cont.jpg" width="500"/>
+</p>
+
+4. Hence we see that along with hexagons several small contours are also drawn on the image. To get rid of them, we choose only the largest 6 contours and draw them. It looks like this:
+
+<p align="center">
+  <img src="images/cont_sel.jpg" width="500"/>
 </p>
