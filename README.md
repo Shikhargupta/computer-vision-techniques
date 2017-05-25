@@ -58,19 +58,19 @@ Source code is [here](hsv.py).
 Original Image
 
 <p align="center">
-  <img src="images/d1_0.jpg" width="500"/>
+  <img src="images/d1_0.jpg" width="300"/>
 </p>
 
 Thresholded Image
 
 <p align="center">
-  <img src="images/d1_1.png" width="500"/>
+  <img src="images/d1_1.png" width="300"/>
 </p>
 
 Original image with the marker
 
 <p align="center">
-  <img src="images/d1_2.png" width="500"/>
+  <img src="images/d1_2.png" width="300"/>
 </p>
 
 #### Dataset 2
@@ -78,19 +78,19 @@ Original image with the marker
 Original Image
 
 <p align="center">
-  <img src="images/d2_0.jpg" width="500"/>
+  <img src="images/d2_0.jpg" width="300"/>
 </p>
 
 Thresholded Image
 
 <p align="center">
-  <img src="images/d2_2.png" width="500"/>
+  <img src="images/d2_2.png" width="300"/>
 </p>
 
 Original image with the marker
 
 <p align="center">
-  <img src="images/d2_1.png" width="500"/>
+  <img src="images/d2_1.png" width="300"/>
 </p>
 
 
@@ -115,9 +115,10 @@ We have to detect only the hexagons. Hence we have to segment the image such tha
 
 <p align="center">
   <img src="images/thresh.jpg" width="500"/>
+
+            *Thresholding parameters were fine tuned by hit and trial to get best results*
 </p>
-                        *Thresholding parameters were fine tuned by hit and trial to get best results*
-                        
+
 3. Now we have to further segregate the hexagons from the remaining parts. For this we use **findContours** function of OpenCV that locates all the continuous points in the image and stores them as a list of lists. Applying the same on the thresholded image we get:
 
 <p align="center">
