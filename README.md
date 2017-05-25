@@ -6,13 +6,13 @@
 
 "Humans use their eyes and their brains to see and visually sense the world around them. Computer vision is the science that aims to give a similar, if not better, capability to a machine or computer. Computer vision is concerned with the automatic extraction, analysis and understanding of useful information from a single image or a sequence of images" - that is the definiton google will come up with. It is pretty self explanatory. As the name suggests it gives a sense of intelligence to the vision of the machine i.e the camera.
 
-This is the python implementation of some of the common yet important techniques often used in computer vision. Various methodologies like tracking, marking, contour drawing, feature extraction etc. are explained and implemented.
+This is the python implementation of some of the common yet important techniques often used in computer vision. Various methodologies like tracking, marking, contour drawing, feature extraction etc. are explained and implemented. Source codes are available in the repository.
 
 ## Pre Requisites
 
 1. [Thresholding](http://aishack.in/tutorials/thresholding/) 
 
-## Tracking
+## [Tracking](Tracking)
 
 This method is used when there is a need to track any subject in a video (or a set of frames). A **marker** is drawn around the subject in each frame so as to identify it. The algorithm can be applied on both RGB and HSV colour spaces and the choice really depends upon the situation. 
 
@@ -33,7 +33,9 @@ In this method the red-green-blue colour channels of the images are used to dete
 
 1. Split the image into blue, green red channels.
 2. Subtract the green and blue channels from the red channel. This helps us to retain the pixels where only red colour           is present. For example the white space in the original image contains all the three components. Hence, when green+blue channel is subtracted from the red channel those areas get cancelled which later can be reduced to zero by **thresholding**.
-3. Now to place the marker, get the **mean point** among the ones which are not reduced to zero.
+3. Now to place the marker, get the **mean point** among the ones which are not reduced to zero. **cv2.circle** function is used to draw the circular marker. You can read more about it and other drawing functions [here](http://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html)
+
+Source code is [here](Tracking/rgb.py).
 
 ### HSV Space
 
@@ -42,6 +44,8 @@ This is an another method which uses hue-saturation-value space to detect the ta
 1. Convert the colour space of the image to HSV.
 2. Define a range of hue values over which the image will be thresholded. Hue value of any colour can be determined by the inbuilt function of OpenCV **cvtColour**.
 3. Now to place the marker, get the **mean point** among the ones which are not reduced to zero.
+
+Source code is [here](hsv.py).
 
 ### Results
 
