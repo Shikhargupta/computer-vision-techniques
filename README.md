@@ -132,3 +132,28 @@ We have to detect only the hexagons. Hence we have to segment the image such tha
 <p align="center">
   <img src="images/cont_sel.jpg" width="500"/>
 </p>
+
+## Facial Expression Recognition Using Gabor Filter
+
+<p align="center">
+  <img src="https://s3.amazonaws.com/kairos-media/blog-images/crowd.png" width="500"/>
+</p>
+
+
+It is a type of linear filter. Special class of bandpass filters, i.e. they allow a specific range of frequencies and reject others. Gabor filters are generally used in texture analysis, edge detection, feature extraction etc. When a Gabor filter is applied to an image, it gives the highest response at edges and at points where texture changes. There are two main parameters – frequency and theta that are varied to extract the features.
+
+Gabor filter is, hence, a feature extracting tool which is widely used in facial expression detection. The extracted features are then fed into a classifier (neural network, SVM classifier etc.) which then further trains the classifier.
+
+Here the steps involved in feature extraction using Gabor filters (source code [here](GaborFilter/gabor.py) is also heavily commented so that everything is clear):
+
+1. Form a filter bank of different orientations and at different scales. Mostly 40 different filters are used at 5 different scales and of 8 different orientations.
+
+<p align="center">
+  <img src="images/gabor.jpg" width="300"/>
+</p>
+
+2. The input image is convolved with each of the filter. So, now we have 40 different images (response matrices) corresponding to one input.
+3. Now, we have to extract features from each image. Several features could be used but here we have used 2:
+  - **Local Energy** - Summing up the squared values of each element of response matrix.
+  - **Mean Amplitude** - Summing up the absolute value of each element of the response matrix.
+4. Hence for every response matrix we have 2 values - its local energy and mean amplitude. 2 seperate matrices are formed for each value and are appended in the corresponding matrix for each response matrix. So now, we have 2 matrices of 1x40 size corrwsponding to each input image. Append one matrix to the other. This single matrix acts as the feature vector for the input image.
