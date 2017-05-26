@@ -8,7 +8,7 @@
 
 This is the python implementation of some of the common yet important techniques often used in computer vision. Various methodologies like tracking, marking, contour drawing, feature extraction etc. are explained and implemented. Source codes are available in the repository.
 
-## Pre Requisites
+#### Pre Requisites
 
 1. [Thresholding](http://aishack.in/tutorials/thresholding/) 
 
